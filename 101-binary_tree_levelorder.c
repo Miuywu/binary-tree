@@ -18,7 +18,7 @@ void free_list(tree_list_t *list)
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-	tree_list_t *head = NULL, *curr = NULL, *end = NULL;
+	tree_list_t *head, *curr, *end;
 
 	if (!tree || !func)
 		return;
@@ -27,9 +27,8 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 		return;
 	head->tree = tree;
 	head->next = NULL;
-	curr = head;
 	end = head;
-	while (curr)
+	for (curr = head; curr; curr = curr->next)
 	{
 		(*func)(curr->tree->n);
 		if (curr->tree->left)
@@ -50,7 +49,6 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 			end->tree = curr->tree->right;
 			end->next = NULL;
 		}
-		curr = curr->next;
 	}
 	free_list(head);
 }
