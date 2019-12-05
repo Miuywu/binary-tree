@@ -15,7 +15,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	return (1);
 }
 /**
- * recurse - Measures the height of the entire binary tree.
+ * p_recurse - Measures the height of the entire binary tree.
  * @tree: The pointer to the root node of the tree to measure the height.
  * Return: The height of a binary tree.
  */
@@ -33,7 +33,7 @@ int p_recurse(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_height - Measures the height of a binary tree.
+ * p_binary_tree_height - Measures the height of a binary tree.
  * @tree: The pointer to the root node of the tree to measure the height.
  * Return: The height of a binary tree.
  */
