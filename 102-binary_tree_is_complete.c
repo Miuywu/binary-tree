@@ -2,10 +2,10 @@
 #include <stdbool.h>
 /**
  * count_nodes - counts number of nodes in binary tree
- * @tree: root of tree
+ * @root: root of tree
  * Return: number of nodes
  */
-int count_nodes(const binary_tree_t* root)
+int count_nodes(const binary_tree_t *root)
 {
 	if (root == NULL)
 		return (0);
@@ -13,18 +13,19 @@ int count_nodes(const binary_tree_t* root)
 }
 /**
  * is_complete - checks if tree has size - 1 nodes
- * @tree: root of tree
+ * @root: root of tree
+ * @index: index assigned to node
+ * @number_nodes: number of nodes
  * Return: true if tree is complete, false otherwise
  */
-bool isComplete (const binary_tree_t* root, int index,
-                 int number_nodes)
+bool is_complete(const binary_tree_t *root, int index, int number_nodes)
 {
 	if (root == NULL)
 		return (true);
 	if (index >= number_nodes)
 		return (false);
- 	return (isComplete(root->left, 2*index + 1, number_nodes) &&
-		isComplete(root->right, 2*index + 2, number_nodes));
+	return (is_complete(root->left, 2 * index + 1, number_nodes) &&
+		is_complete(root->right, 2 * index + 2, number_nodes));
 }
 /**
  * binary_tree_is_complete - checks if a binary tree is complete
@@ -40,7 +41,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 
 	node_count = count_nodes(tree);
 	index = 0;
-	if (isComplete(tree, index, node_count))
+	if (is_complete(tree, index, node_count))
 		return (1);
 	else
 		return (0);
